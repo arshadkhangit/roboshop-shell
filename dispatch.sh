@@ -1,6 +1,6 @@
 
 echo -e "e\[33m Installing Golang  \e[0m"
-yum install golang -y
+yum install golang -y &>>/tmp/robodhop.log
 
 
 echo -e "e\[33m Adding user\e[0m"
@@ -16,11 +16,11 @@ cd /app
 echo -e "e\[33m extracting dispatch file\e[0m"
 unzip /tmp/dispatch.zip &>>/tmp/robodhop.log
 echo -e "e\[33m  \e[0m"
-cd /app
-go mod init dispatch
-go get
-go build
+cd /app &>>/tmp/robodhop.log
+go mod init dispatch &>>/tmp/robodhop.log
+go get &>>/tmp/robodhop.log
+go build &>>/tmp/robodhop.log
 echo -e "e\[33m Starting of Dispatch server \e[0m"
-systemctl daemon-reload
-systemctl enable dispatch
-systemctl restart dispatch
+systemctl daemon-reload &>>/tmp/robodhop.log
+systemctl enable dispatch &>>/tmp/robodhop.log
+systemctl restart dispatch &>>/tmp/robodhop.log

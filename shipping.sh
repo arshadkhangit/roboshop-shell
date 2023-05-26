@@ -14,7 +14,7 @@ echo -e "\e[33m Extracting Shipping file \e[0m"
 unzip /tmp/shipping.zip &>>/tmp/robodhop.log
 
 echo -e "\e[33m Cleaning package \e[0m"
-cd /app &>>/tmp/robodhop.log
+cd /app &>>/tmp/robodhop.log &>>/tmp/robodhop.log
 mvn clean package &>>/tmp/robodhop.log
 mv target/shipping-1.0.jar shipping.jar &>>/tmp/robodhop.log
 

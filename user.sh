@@ -12,10 +12,10 @@ useradd roboshop &>>/tmp/robodhop.log
 rm -rf app
 echo -e "e\[33m Adding Directory\e[0m"
 mkdir /app
-echo -e "e\[33m Downloading user file\e[0m"
+echo -e "e\[33m Downloading catalogue file\e[0m"
 curl -o /tmp/user.zip https://roboshop-artifacts.s3.amazonaws.com/user.zip &>>/tmp/robodhop.log
 cd /app
-echo -e "e\[33m extracting user file\e[0m"
+echo -e "e\[33m extracting catalogue file\e[0m"
 unzip /tmp/user.zip &>>/tmp/robodhop.log
 
 cd /app
@@ -30,6 +30,6 @@ echo -e "e\[33m Installing Mongodb client\e[0m"
 yum install mongodb-org-shell -y &>>/tmp/robodhop.log
 echo -e "e\[33m Loading schema\e[0m"
 mongo --host mongodb-dev.arshadev.online </app/schema/user.js &>>/tmp/robodhop.log
-echo -e "e\[33m Starting user server\e[0m"
+echo -e "e\[33m Starting user\e[0m"
 systemctl enable user &>>/tmp/robodhop.log
 systemctl restart user &>>/tmp/robodhop.log

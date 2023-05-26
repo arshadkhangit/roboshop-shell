@@ -13,10 +13,10 @@ useradd roboshop &>>/tmp/robodhop.log
 echo -e "\e[33m Adding Directory\e[0m"
 rm -rf app
 mkdir /app
-echo -e "\e[33m Downloading catalogue file\e[0m"
+echo -e "\e[33m Downloading user file\e[0m"
 curl -o /tmp/user.zip https://roboshop-artifacts.s3.amazonaws.com/user.zip &>>/tmp/robodhop.log
 cd /app
-echo -e "\e[33m extracting catalogue file\e[0m"
+echo -e "\e[33m extracting user file\e[0m"
 unzip /tmp/user.zip &>>/tmp/robodhop.log
 
 

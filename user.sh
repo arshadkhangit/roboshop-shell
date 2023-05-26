@@ -22,11 +22,13 @@ unzip /tmp/user.zip &>>/tmp/robodhop.log
 
 echo -e "\e[33m installing npm\e[0m"
 npm install &>>/tmp/robodhop.log
+
 echo -e "\e[33m copy user service file\e[0m"
 cp /home/centos/roboshop-shell/user.service /etc/systemd/system/user.service &>>/tmp/robodhop.log
 
 echo -e "\e[33m copy mongodb repo\e[0m"
 cp /home/centos/roboshop-shell/mongodb.repo /etc/yum.repos.d/mongodb.repo
+
 echo -e "\e[33m Installing Mongodb client\e[0m"
 yum install mongodb-org-shell -y &>>/tmp/robodhop.log
 echo -e "\e[33m Loading schema\e[0m"

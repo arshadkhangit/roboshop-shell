@@ -11,7 +11,7 @@ useradd roboshop &>>/tmp/robodhop.log
 
 
 echo -e "\e[33m Adding Directory\e[0m"
-rm -rf app
+rm -rf /app
 mkdir /app
 echo -e "\e[33m Downloading user file\e[0m"
 curl -o /tmp/user.zip https://roboshop-artifacts.s3.amazonaws.com/user.zip &>>/tmp/robodhop.log
@@ -23,10 +23,10 @@ unzip /tmp/user.zip &>>/tmp/robodhop.log
 echo -e "\e[33m installing npm\e[0m"
 npm install &>>/tmp/robodhop.log
 echo -e "\e[33m copy user service file\e[0m"
-cp user.service /etc/systemd/system/user.service &>>/tmp/robodhop.log
+cp /home/centos/roboshop-shell/user.service /etc/systemd/system/user.service &>>/tmp/robodhop.log
 systemctl daemon-reload
 echo -e "\e[33m copy mongodb repo\e[0m"
-cp mongodb.repo /etc/yum.repos.d/mongodb.repo
+cp /home/centos/roboshop-shell/mongodb.repo /etc/yum.repos.d/mongodb.repo
 echo -e "\e[33m Installing Mongodb client\e[0m"
 yum install mongodb-org-shell -y &>>/tmp/robodhop.log
 echo -e "\e[33m Loading schema\e[0m"

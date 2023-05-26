@@ -1,6 +1,6 @@
 
 
-yum install python36 gcc python3-devel -y
+yum install python36 gcc python3-devel -y &>>/tmp/robodhop.log
 
 
 echo -e "\e[33m Adding user\e[0m"

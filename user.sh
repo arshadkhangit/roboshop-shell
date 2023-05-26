@@ -9,8 +9,9 @@ echo -e "\e[33m Adding User \e[0m"
 useradd roboshop &>>/tmp/robodhop.log
 
 
-rm -rf app
+
 echo -e "\e[33m Adding Directory\e[0m"
+rm -rf app
 mkdir /app
 echo -e "\e[33m Downloading catalogue file\e[0m"
 curl -o /tmp/user.zip https://roboshop-artifacts.s3.amazonaws.com/user.zip &>>/tmp/robodhop.log
@@ -18,7 +19,7 @@ cd /app
 echo -e "\e[33m extracting catalogue file\e[0m"
 unzip /tmp/user.zip &>>/tmp/robodhop.log
 
-cd /app
+
 echo -e "\e[33m installing npm\e[0m"
 npm install &>>/tmp/robodhop.log
 echo -e "\e[33m copy user service file\e[0m"

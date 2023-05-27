@@ -4,6 +4,7 @@ yum install maven -y &>>/tmp/robodhop.log
 echo -e "\e[33m Adding user \e[0m"
 useradd roboshop &>>/tmp/robodhop.log
 echo -e "\e[33m Creating Directory \e[0m"
+
 rm -rf /app &>>/tmp/robodhop.log
 mkdir /app &>>/tmp/robodhop.log
 echo -e "\e[33m Downloading Shipping file \e[0m"
@@ -17,6 +18,8 @@ echo -e "\e[33m Cleaning package \e[0m"
 cd /app &>>/tmp/robodhop.log &>>/tmp/robodhop.log
 mvn clean package &>>/tmp/robodhop.log
 mv target/shipping-1.0.jar shipping.jar &>>/tmp/robodhop.log
+
+cp /home/centos/roboshop-shell/shipping.service /etc/systemd/system/shipping.service &>>/tmp/robodhop.log
 
 echo -e "\e[33m Installing Mysql client \e[0m"
 yum install mysql -y &>>/tmp/robodhop.log

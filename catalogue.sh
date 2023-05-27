@@ -32,5 +32,5 @@ echo -e "\e[33m Installing Mongodb client\e[0m"
 yum install mongodb-org-shell -y  &>>/tmp/robodhop.log
 echo -e "\e[33m Loading schema\e[0m"
 mongo --host mongodb-dev.arshadev.online </app/schema/catalogue.js  &>>/tmp/robodhop.log
-echo -e "\e[33m Starting Catalogue\e[0m"
+
 

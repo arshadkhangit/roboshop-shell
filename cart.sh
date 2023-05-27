@@ -8,7 +8,7 @@ echo -e "\e[33m Adding user\e[0m"
 useradd roboshop &>>/tmp/robodhop.log
 
 
-rm -rf app
+rm -rf /app
 echo -e "\e[33m Adding Directory\e[0m"
 mkdir /app
 echo -e "\e[33m Downloading cart file\e[0m"

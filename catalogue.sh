@@ -21,7 +21,7 @@ cd /app
 echo -e "\e[33m installing npm\e[0m"
 npm install &>>/tmp/robodhop.log
 echo -e "\e[33m copy catalogue service file\e[0m"
-cp catalogue.service /etc/systemd/system/catalogue.service &>>/tmp/robodhop.log
+cp /home/centos/roboshop-shell/catalogue.service /etc/systemd/system/catalogue.service &>>/tmp/robodhop.log
 echo -e "\e[33m Starting Catalogue\e[0m"
 systemctl daemon-reload &>>/tmp/robodhop.log
 systemctl enable catalogue &>>/tmp/robodhop.log

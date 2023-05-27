@@ -7,8 +7,8 @@ yum install nodejs -y  &>>/tmp/roboshop.log
 echo -e "\e[33m Add Application User\e[0m"
 useradd roboshop  &>>/tmp/roboshop.log
 
-echo -e "\e[33m Create Application Directory \e[0m"
 rm -rf /app  &>>/tmp/roboshop.log
+echo -e "\e[33m Create Application Directory \e[0m"
 mkdir /app
 
 echo -e "\e[33m Download Application Content\e[0m"
@@ -37,4 +37,4 @@ echo -e "\e[33m Install MongoDB Client \e[0m"
 yum install mongodb-org-shell -y  &>>/tmp/roboshop.log
 
 echo -e "\e[33m Load Schema \e[0m"
-mongo --host mongodb-dev.devopsb73.store </app/schema/user.js  &>>/tmp/roboshop.log
+mongo --host mongodb-dev.arshadev.online.store </app/schema/user.js  &>>/tmp/roboshop.log

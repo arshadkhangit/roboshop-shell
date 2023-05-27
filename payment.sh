@@ -1,5 +1,5 @@
 
-
+echo -e "\e[33m Installing Python36 \e[0m"
 yum install python36 gcc python3-devel -y &>>/tmp/robodhop.log
 
 
@@ -7,7 +7,7 @@ echo -e "\e[33m Adding user\e[0m"
 useradd roboshop &>>/tmp/robodhop.log
 
 
-rm -rf app
+rm -rf /app
 echo -e "\e[33m Adding Directory\e[0m"
 mkdir /app
 echo -e "\e[33m Downloading Payment file\e[0m"

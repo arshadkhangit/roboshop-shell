@@ -13,6 +13,6 @@ unzip /tmp/frontend.zip &>>/tmp/robodhop.log
 echo -e "\e[33m Copy roboshop.conf \e[0m"
 cp /home/centos/roboshop-shell/roboshop.conf /etc/nginx/default.d/roboshop.conf &>>/tmp/robodhop.log
 
-echo -e "\e[33mstarting nginx server\e[0m"
+echo -e "\e[33mstarting nginx server \e[0m"
 systemctl enable nginx &>>/tmp/robodhop.log
 systemctl restart nginx &>>/tmp/robodhop.log

@@ -1,4 +1,4 @@
-echo -e "\e[33m Downloading the NodeJS\e[0m"
+echo -e "\e[33m Configuring the NodeJS\e[0m"
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>/tmp/robodhop.log
 
 echo  -e "\e[33m Installing the NodeJS\e[0m"

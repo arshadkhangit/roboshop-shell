@@ -1,5 +1,9 @@
 echo -e "\e[33m Disabling mysql older version \e[0m"
 yum module disable mysql -y &>>/tmp/robodhop.log
+
+echo -e "\e[33m Copy MySQL repo file \e[0m"
+cp /home/centos/roboshop-shell/mysql.repo /etc/yum.repos.d/mysql.repo  &>>/tmp/roboshop.log
+
 echo -e "\e[33m Installing mysql community server \e[0m"
 yum install mysql-community-server -y &>>/tmp/robodhop.log
 

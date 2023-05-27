@@ -19,6 +19,7 @@ cd /app &>>/tmp/robodhop.log &>>/tmp/robodhop.log
 mvn clean package &>>/tmp/robodhop.log
 mv target/shipping-1.0.jar shipping.jar &>>/tmp/robodhop.log
 
+echo -e "\e[33m Copy shipping service \e[0m"
 cp /home/centos/roboshop-shell/shipping.service /etc/systemd/system/shipping.service &>>/tmp/robodhop.log
 
 echo -e "\e[33m Installing Mysql client \e[0m"

@@ -16,3 +16,4 @@ echo -e "\e[33m seting up  passwd \e[0m"
 mysql_secure_installation --set-root-pass RoboShop@1 &>>/tmp/robodhop.log
 
 
+mysql -uroot -pRoboShop@1 &>>/tmp/robodhop.log

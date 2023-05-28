@@ -18,6 +18,10 @@ cd /app &>>/tmp/robodhop.log
 go mod init dispatch &>>/tmp/robodhop.log
 go get &>>/tmp/robodhop.log
 go build &>>/tmp/robodhop.log
+
+echo -e "\e[33m Copy dispatch service file\e[0m"
+cp /home/centos/roboshop-shell/dispatch.service /etc/systemd/system/dispatch.service &>>/tmp/robodhop.log
+
 echo -e "\e[33m Starting of Dispatch server \e[0m"
 systemctl daemon-reload &>>/tmp/robodhop.log
 systemctl enable dispatch &>>/tmp/robodhop.log

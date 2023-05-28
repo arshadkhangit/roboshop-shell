@@ -19,7 +19,7 @@ cd /app &>>/tmp/robodhop.log
 pip3.6 install -r requirements.txt &>>/tmp/robodhop.log
 
 echo -e "\e[33m Copy payment service file\e[0m"
-cp /home/centos/roboshop-shell//payment.service /etc/systemd/system/payment.service
+cp /home/centos/roboshop-shell/payment.service /etc/systemd/system/payment.service
 
 echo -e "\e[33m Starting payment server\e[0m"
 systemctl daemon-reload  &>>/tmp/robodhop.log

@@ -15,5 +15,5 @@ systemctl start mysqld &>>/tmp/robodhop.log
 echo -e "\e[33m seting up  passwd \e[0m"
 mysql_secure_installation --set-root-pass RoboShop@1 &>>/tmp/robodhop.log
 
-
+echo -e "\e[33m cecking password \e[0m"
 mysql -uroot -pRoboShop@1 &>>/tmp/robodhop.log

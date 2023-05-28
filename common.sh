@@ -36,11 +36,11 @@ nodejs() {
 
 mongo_schema_setup(){
   echo -e "${color} Copy MongoDB Repo file ${nocolor}"
-  cp /home/centos/roboshop-shell/mongodb.repo /etc/yum.repos.d/mongodb.repo  &>>/tmp/roboshop.log
+  cp /home/centos/roboshop-shell/mongodb.repo /etc/yum.repos.d/mongodb.repo  &>>$log_file
 
   echo -e "${color} Install MongoDB Client ${nocolor}"
-  yum install mongodb-org-shell -y  &>>/tmp/roboshop.log
+  yum install mongodb-org-shell -y  &>>$log_file
 
   echo -e "${color} Load Schema ${nocolor}"
-  mongo --host mongodb-dev.arshadev.online.store </app/schema/$component.js  &>>/tmp/roboshop.log
+  mongo --host mongodb-dev.arshadev.online.store </app/schema/$component.js  &>>$log_file
 }

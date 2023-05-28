@@ -1,4 +1,4 @@
-component = catalogue
+component=catalogue
 echo -e "\e[33m Configuring the NodeJS\e[0m"
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>/tmp/robodhop.log
 

@@ -1,36 +1,40 @@
 component=catalogue
-echo -e "\e[33m Configuring the NodeJS\e[0m"
+color="\e[35m"
+nocolor="\e[0m"
+
+
+echo -e "${color} Configuring the NodeJS${nocolor}"
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>/tmp/robodhop.log
 
-echo  -e "\e[33m Installing the NodeJS\e[0m"
+echo  -e "${color} Installing the NodeJS${nocolor}"
 yum install nodejs -y &>>/tmp/robodhop.log
 
-echo -e "\e[33m Adding User Roboshop\e[0m"
+echo -e "${color} Adding User Roboshop${nocolor}"
 useradd roboshop &>>/tmp/robodhop.log
 
 rm -rf /app
-echo -e "\e[33m Adding Directory\e[0m"
+echo -e "${color} Adding Directory${nocolor}"
 mkdir /app
-echo -e "\e[33m Downloading $component file\e[0m"
+echo -e "${color} Downloading $component file${nocolor}"
 curl -o /tmp/$component.zip https://roboshop-artifacts.s3.amazonaws.com/$component.zip &>>/tmp/robodhop.log
 cd /app
-echo -e "\e[33m extracting $component file\e[0m"
+echo -e "${color} extracting $component file${nocolor}"
 unzip /tmp/$component.zip &>>/tmp/robodhop.log
 
 cd /app
-echo -e "\e[33m installing npm\e[0m"
+echo -e "${color} installing npm${nocolor}"
 npm install &>>/tmp/robodhop.log
-echo -e "\e[33m copy $component service file\e[0m"
+echo -e "${color} copy $component service file${nocolor}"
 cp /home/centos/roboshop-shell/$component.service /etc/systemd/system/$component.service &>>/tmp/robodhop.log
-echo -e "\e[33m Starting $component\e[0m"
+echo -e "${color} Starting $component${nocolor}"
 systemctl daemon-reload &>>/tmp/robodhop.log
 systemctl enable $component &>>/tmp/robodhop.log
 systemctl restart $component &>>/tmp/robodhop.log
-echo -e "\e[33m copy mongodb repo\e[0m"
+echo -e "${color} copy mongodb repo${nocolor}"
 cp /home/centos/roboshop-shell/mongodb.repo /etc/yum.repos.d/mongodb.repo  &>>/tmp/robodhop.log
-echo -e "\e[33m Installing Mongodb client\e[0m"
+echo -e "${color} Installing Mongodb client${nocolor}"
 yum install mongodb-org-shell -y  &>>/tmp/robodhop.log
-echo -e "\e[33m Loading schema\e[0m"
+echo -e "${color} Loading schema${nocolor}"
 mongo --host mongodb-dev.arshadev.online </app/schema/$component.js  &>>/tmp/robodhop.log
 
 

@@ -13,8 +13,9 @@ curl -L -o /tmp/cart.zip https://roboshop-artifacts.s3.amazonaws.com/cart.zip  &
 cd /app  &>>/tmp/robodhop.log
 unzip /tmp/cart.zip  &>>/tmp/robodhop.log
 
+cd /app
 echo -e "\e[33m Installing application \e[0m"
-cd /app  &>>/tmp/robodhop.log
+
 npm install  &>>/tmp/robodhop.log
 
 
@@ -25,4 +26,4 @@ cp /home/centos/roboshop-shell/cart.service /etc/systemd/system/cart.service  &>
 echo -e "\e[33m starting cart server \e[0m"
 systemctl daemon-reload  &>>/tmp/robodhop.log
 systemctl enable cart  &>>/tmp/robodhop.log
-systemctl start cart  &>>/tmp/robodhop.log
+systemctl restart cart  &>>/tmp/robodhop.log

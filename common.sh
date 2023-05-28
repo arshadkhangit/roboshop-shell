@@ -20,7 +20,7 @@ app_presetup(){
   unzip /tmp/$component.zip &>>$log_file
 }
 
-system_setup(){
+systemd_setup(){
   echo -e "${color} copy $component service file${nocolor}"
   cp /home/centos/roboshop-shell/$component.service /etc/systemd/system/$component.service &>>$log_file
   echo -e "${color} Starting $component${nocolor}"

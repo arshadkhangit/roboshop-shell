@@ -1,4 +1,3 @@
-
 echo -e "\e[33m Installing Maven \e[0m"
 yum install maven -y &>>/tmp/robodhop.log
 echo -e "\e[33m Adding user \e[0m"

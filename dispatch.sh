@@ -1,7 +1,5 @@
-
 echo -e "\e[33m Installing Golang  \e[0m"
 yum install golang -y &>>/tmp/robodhop.log
-
 
 echo -e "\e[33m Adding user\e[0m"
 useradd roboshop &>>/tmp/robodhop.log

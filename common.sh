@@ -1,4 +1,4 @@
-color="\e[32m"
+color="\e[31m"
 nocolor="${nocolor}"
 log_file="/tmp/robodhop.log"
 app_path="/app"

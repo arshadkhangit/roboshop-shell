@@ -78,3 +78,26 @@ maven(){
 
   systemd_setup
 }
+python(){
+  echo -e "${color} Installing Python36 ${nocolor}"
+  yum install python36 gcc python3-devel -y &>>$log_file
+
+
+  echo -e "${color} Adding user${nocolor}"
+  useradd roboshop &>>$log_file
+
+  rm -rf ${app_path}
+  echo -e "${color} Adding Directory${nocolor}"
+  mkdir ${app_path}
+  echo -e "${color} Downloading $component file${nocolor}"
+  curl -o /tmp/$component.zip https://roboshop-artifacts.s3.amazonaws.com/$component.zip &>>$log_file
+  cd ${app_path}
+  echo -e "${color} extracting $component file${nocolor}"
+  unzip /tmp/$component.zip &>>$log_file
+
+  echo -e "${color} Downloading and Installing Dependencies${nocolor}"
+  cd ${app_path} &>>$log_file
+  pip3.6 install -r requirements.txt &>>$log_file
+
+  systemd_setup
+}

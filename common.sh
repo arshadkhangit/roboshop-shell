@@ -5,10 +5,10 @@ app_path="/app"
 
 stat_check(){
   if [ $1 -eq 0 ]; then
-      echo success
-    else
-      echo failure
-    fi
+    echo success
+  else
+    echo failure
+  fi
 }
 app_presetup(){
   echo -e "${color} Adding User Roboshop${nocolor}"

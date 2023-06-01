@@ -3,63 +3,51 @@ nocolor="${nocolor}"
 log_file="/tmp/robodhop.log"
 app_path="/app"
 
+stat_check(){
+  if [ $1 -eq 0 ]; then
+      echo success
+    else
+      echo failure
+    fi
+}
 app_presetup(){
   echo -e "${color} Adding User Roboshop${nocolor}"
   id roboshop &>>$log_file
   if [ $? -eq 1 ]; then
     useradd roboshop &>>$log_file
   fi
-  if [ $? -eq 0 ]; then
-    echo success
-  else
-    echo failure
-  fi
+  stat_check $?
+
   echo -e "${color} Creating Directory ${nocolor}"
   rm -rf ${app_path} &>>$log_file
   mkdir ${app_path} &>>$log_file
-   if [ $? -eq 0 ]; then
-     echo success
-   else
-     echo failure
-   fi
+
+  stat_check
 
   echo -e "${color} Downloading $component file${nocolor}"
   curl -o /tmp/$component.zip https://roboshop-artifacts.s3.amazonaws.com/$component.zip &>>$log_file
   cd ${app_path}
-   if [ $? -eq 0 ]; then
-     echo success
-   else
-     echo failure
-   fi
+  stat_check $?
 
   echo -e "${color} extracting $component file${nocolor}"
   cd ${app_path}
   unzip /tmp/$component.zip &>>$log_file
-   if [ $? -eq 0 ]; then
-     echo success
-   else
-     echo failure
-   fi
+  stat_check $?
+
 }
 
 systemd_setup(){
   echo -e "${color} copy $component service file${nocolor}"
   cp /home/centos/roboshop-shell/$component.service /etc/systemd/system/$component.service &>>$log_file
-   if [ $? -eq 0 ]; then
-     echo success
-   else
-     echo failure
-   fi
+
+  stat_check $?
+
   echo -e "${color} Starting $component${nocolor}"
   systemctl daemon-reload &>>$log_file
   systemctl enable $component &>>$log_file
   systemctl restart $component &>>$log_file
 
-   if [ $? -eq 0 ]; then
-     echo success
-   else
-     echo failure
-   fi
+   stat_check $?
 }
 
 
@@ -114,22 +102,15 @@ maven(){
 python(){
   echo -e "${color} Installing Python36 ${nocolor}"
   yum install python36 gcc python3-devel -y &>>$log_file
-   if [ $? -eq 0 ]; then
-     echo success
-   else
-     echo failure
-   fi
+
+  stat_check $?
 
   app_presetup
 
   echo -e "${color} Downloading and Installing Dependencies${nocolor}"
   cd ${app_path} &>>$log_file
   pip3.6 install -r requirements.txt &>>$log_file
-   if [ $? -eq 0 ]; then
-     echo success
-   else
-     echo failure
-   fi
+  stat_check $?
 
   systemd_setup
 }

@@ -6,7 +6,7 @@ app_path="/app"
 app_presetup(){
   echo -e "${color} Adding User Roboshop${nocolor}"
   useradd roboshop &>>$log_file
-  if [ $? -eq o ]; then
+  if [ $? -eq 0 ]; then
     echo success
   else
     echo failure
@@ -14,7 +14,7 @@ app_presetup(){
   echo -e "${color} Creating Directory ${nocolor}"
   rm -rf ${app_path} &>>$log_file
   mkdir ${app_path} &>>$log_file
-   if [ $? -eq o ]; then
+   if [ $? -eq 0 ]; then
      echo success
    else
      echo failure
@@ -23,7 +23,7 @@ app_presetup(){
   echo -e "${color} Downloading $component file${nocolor}"
   curl -o /tmp/$component.zip https://roboshop-artifacts.s3.amazonaws.com/$component.zip &>>$log_file
   cd ${app_path}
-   if [ $? -eq o ]; then
+   if [ $? -eq 0 ]; then
      echo success
    else
      echo failure
@@ -32,7 +32,7 @@ app_presetup(){
   echo -e "${color} extracting $component file${nocolor}"
   cd ${app_path}
   unzip /tmp/$component.zip &>>$log_file
-   if [ $? -eq o ]; then
+   if [ $? -eq 0 ]; then
      echo success
    else
      echo failure
@@ -42,7 +42,7 @@ app_presetup(){
 systemd_setup(){
   echo -e "${color} copy $component service file${nocolor}"
   cp /home/centos/roboshop-shell/$component.service /etc/systemd/system/$component.service &>>$log_file
-   if [ $? -eq o ]; then
+   if [ $? -eq 0 ]; then
      echo success
    else
      echo failure
@@ -52,7 +52,7 @@ systemd_setup(){
   systemctl enable $component &>>$log_file
   systemctl restart $component &>>$log_file
 
-   if [ $? -eq o ]; then
+   if [ $? -eq 0 ]; then
      echo success
    else
      echo failure
@@ -111,7 +111,7 @@ maven(){
 python(){
   echo -e "${color} Installing Python36 ${nocolor}"
   yum install python36 gcc python3-devel -y &>>$log_file
-   if [ $? -eq o ]; then
+   if [ $? -eq 0 ]; then
      echo success
    else
      echo failure
@@ -122,7 +122,7 @@ python(){
   echo -e "${color} Downloading and Installing Dependencies${nocolor}"
   cd ${app_path} &>>$log_file
   pip3.6 install -r requirements.txt &>>$log_file
-   if [ $? -eq o ]; then
+   if [ $? -eq 0 ]; then
      echo success
    else
      echo failure

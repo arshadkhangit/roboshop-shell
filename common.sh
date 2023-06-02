@@ -3,14 +3,14 @@ nocolor="${nocolor}"
 log_file="/tmp/robodhop.log"
 app_path="/app"
 
-stat_check(){
+stat_check() {
   if [ $1 -eq 0 ]; then
     echo success
   else
     echo failure
   fi
 }
-app_presetup(){
+app_presetup() {
   echo -e "${color} Adding User Roboshop${nocolor}"
   id roboshop &>>$log_file
   if [ $? -eq 1 ]; then
@@ -36,7 +36,7 @@ app_presetup(){
 
 }
 
-systemd_setup(){
+systemd_setup() {
   echo -e "${color} copy $component service file${nocolor}"
   cp /home/centos/roboshop-shell/$component.service /etc/systemd/system/$component.service &>>$log_file
   sed -i -e "s/roboshop_app_password/$roboshop_app_password/" /etc/systemd/system/$component.service"
@@ -50,7 +50,7 @@ systemd_setup(){
 }
 
 
-nodejs(){
+nodejs() {
   echo -e "${color} Configuring the NodeJS${nocolor}"
   curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>$log_file
 
@@ -65,7 +65,7 @@ nodejs(){
   systemd_setup
 }
 
-mongo_schema_setup(){
+mongo_schema_setup() {
   echo -e "${color} Copy MongoDB Repo file ${nocolor}"
   cp /home/centos/roboshop-shell/mongodb.repo /etc/yum.repos.d/mongodb.repo  &>>$log_file
 
@@ -76,7 +76,7 @@ mongo_schema_setup(){
   mongo --host mongodb-dev.arshadev.online.store <${app_path}/schema/$component.js  &>>$log_file
 }
 
-mysql_schema_setup(){
+mysql_schema_setup() {
   echo -e "${color} Installing Mysql client ${nocolor}"
   yum install mysql -y &>>$log_file
 
@@ -84,7 +84,7 @@ mysql_schema_setup(){
   mysql -h mysql-dev.arshadev.online -uroot -pRoboShop@1 < ${app_path}/schema/$component.sql &>>$log_file
 }
 
-maven(){
+maven() {
   echo -e "${color} Installing Maven ${nocolor}"
   yum install maven -y &>>$log_file
 
@@ -99,7 +99,7 @@ maven(){
   systemd_setup
 }
 
-python(){
+python() {
   echo -e "${color} Installing Python36 ${nocolor}"
   yum install python36 gcc python3-devel -y &>>$log_file
 

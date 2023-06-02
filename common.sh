@@ -79,6 +79,7 @@ mongo_schema_setup() {
   echo -e "${color} Install MongoDB Client ${nocolor}"
   yum install mongodb-org-shell -y  &>>$log_file
   stat_check $?
+
   echo -e "${color} Load Schema ${nocolor}"
   mongo --host mongodb-dev.arshadev.online <${app_path}/schema/$component.js  &>>$log_file
   stat_check $?

@@ -104,6 +104,7 @@ maven() {
   echo -e "${color} Cleaning package ${nocolor}"
   mvn clean package &>>$log_file
   mv target/$component-1.0.jar $component.jar &>>$log_file
+  stat_check $?
 
   mysql_schema_setup
 

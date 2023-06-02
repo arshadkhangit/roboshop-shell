@@ -1,3 +1,4 @@
+source common.sh
 echo -e "\e[33m Installing Golang  \e[0m"
 yum install golang -y &>>/tmp/robodhop.log
 

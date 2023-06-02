@@ -32,7 +32,7 @@ app_presetup() {
 
   echo -e "${color} Downloading $component file ${nocolor}"
   curl -o /tmp/$component.zip https://roboshop-artifacts.s3.amazonaws.com/$component.zip &>>$log_file
-  cd ${app_path}
+
   stat_check $?
 
   echo -e "${color} extracting $component file ${nocolor}"
@@ -43,7 +43,7 @@ app_presetup() {
 }
 
 systemd_setup() {
-  echo -e "${color} copy $component service file${nocolor}"
+  echo -e "${color} copy $component service file ${nocolor}"
   cp /home/centos/roboshop-shell/$component.service /etc/systemd/system/$component.service &>>$log_file
   sed -i -e "s/roboshop_app_password/$roboshop_app_password/" /etc/systemd/system/$component.service
   stat_check $?
@@ -65,7 +65,7 @@ nodejs() {
   stat_check $?
   app_presetup
 
-  echo -e "${color} installing npm${nocolor}"
+  echo -e "${color} installing Nodejs Dependencies ${nocolor}"
   npm install &>>$log_file
   stat_check $?
   systemd_setup

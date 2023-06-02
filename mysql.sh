@@ -17,5 +17,5 @@ systemctl restart mysqld &>>$log_file
 stat_check $?
 
 echo -e "\e[33m seting up  passwd \e[0m"
-mysql_secure_installation --set-root-pass RoboShop@1 &>>$log_file
+mysql_secure_installation --set-root-pass $1 &>>$log_file
 stat_check $?

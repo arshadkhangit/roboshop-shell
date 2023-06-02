@@ -89,7 +89,7 @@ mysql_schema_setup() {
   yum install mysql -y &>>$log_file
   stat_check $?
   echo -e "${color} Loading Schema ${nocolor}"
-  mysql -h mysql-dev.arshadev.online -uroot -pRoboShop@1 <${app_path}/schema/$component.sql &>>$log_file
+  mysql -h mysql-dev.arshadev.online -uroot -p${mysql_root_password} <${app_path}/schema/$component.sql &>>$log_file
   stat_check $?
 }
 

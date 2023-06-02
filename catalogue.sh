@@ -3,7 +3,6 @@ component=catalogue
 
 
 nodejs
-
 mongo_schema_setup
 
 

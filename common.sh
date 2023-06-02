@@ -11,7 +11,7 @@ stat_check() {
   fi
 }
 app_presetup() {
-  echo -e "${color} Adding User Roboshop${nocolor}"
+  echo -e "${color} Adding User Roboshop ${nocolor}"
   id roboshop &>>$log_file
   if [ $? -eq 1 ]; then
     useradd roboshop &>>$log_file
@@ -24,12 +24,12 @@ app_presetup() {
 
   stat_check $?
 
-  echo -e "${color} Downloading $component file${nocolor}"
+  echo -e "${color} Downloading $component file ${nocolor}"
   curl -o /tmp/$component.zip https://roboshop-artifacts.s3.amazonaws.com/$component.zip &>>$log_file
   cd ${app_path}
   stat_check $?
 
-  echo -e "${color} extracting $component file${nocolor}"
+  echo -e "${color} extracting $component file ${nocolor}"
   cd ${app_path}
   unzip /tmp/$component.zip &>>$log_file
   stat_check $?
@@ -111,7 +111,5 @@ python() {
   cd ${app_path} &>>$log_file
   pip3.6 install -r requirements.txt &>>$log_file
   stat_check $?
-
   systemd_setup
-
 }

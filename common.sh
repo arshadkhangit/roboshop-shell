@@ -99,7 +99,7 @@ maven() {
   systemd_setup
 }
 
-python() {
+python(){
   echo -e "${color} Installing Python36 ${nocolor}"
   yum install python36 gcc python3-devel -y &>>$log_file
 

@@ -59,36 +59,40 @@ systemd_setup() {
 nodejs() {
   echo -e "${color} Configuring the NodeJS${nocolor}"
   curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>$log_file
-
+  stat_check $?
   echo  -e "${color} Installing the NodeJS${nocolor}"
   yum install nodejs -y &>>$log_file
-
+  stat_check $?
   app_presetup
-
+  stat_check $?
   echo -e "${color} installing npm${nocolor}"
   npm install &>>$log_file
-
+  stat_check $?
   systemd_setup
 }
 
 mongo_schema_setup() {
   echo -e "${color} Copy MongoDB Repo file ${nocolor}"
   cp /home/centos/roboshop-shell/mongodb.repo /etc/yum.repos.d/mongodb.repo  &>>$log_file
+  stat_check $?
 
   echo -e "${color} Install MongoDB Client ${nocolor}"
   yum install mongodb-org-shell -y  &>>$log_file
-
+  stat_check $?
   echo -e "${color} Load Schema ${nocolor}"
   mongo --host mongodb-dev.arshadev.online.store <${app_path}/schema/$component.js  &>>$log_file
+  stat_check $?
 }
 
 mysql_schema_setup() {
   echo -e "${color} Installing Mysql client ${nocolor}"
   yum install mysql -y &>>$log_file
-
+  stat_check $?
   echo -e "${color} Loading Schema ${nocolor}"
   mysql -h mysql-dev.arshadev.online -uroot -pRoboShop@1 < ${app_path}/schema/$component.sql &>>$log_file
+  stat_check $?
 }
+
 
 maven() {
   echo -e "${color} Installing Maven ${nocolor}"

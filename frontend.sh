@@ -2,7 +2,6 @@ source common.sh
 echo -e "{$color} installing nginx server {$nocolor}"
 yum install nginx -y &>>$log_file
 stat_check
-
 echo -e "{$color}removing old app content{$nocolor}"
 rm -rf /usr/share/nginx/html/* &>>$log_file
 stat_check

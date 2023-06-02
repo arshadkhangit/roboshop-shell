@@ -32,6 +32,7 @@ app_presetup() {
 
   echo -e "${color} Downloading $component file ${nocolor}"
   curl -o /tmp/$component.zip https://roboshop-artifacts.s3.amazonaws.com/$component.zip &>>$log_file
+  cd ${app_path}
   stat_check $?
 
   echo -e "${color} extracting $component file ${nocolor}"
@@ -56,10 +57,10 @@ systemd_setup() {
 
 
 nodejs() {
-  echo -e "${color} Configuring the NodeJS${nocolor}"
+  echo -e "${color} Configuring the NodeJS ${nocolor}"
   curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>$log_file
   stat_check $?
-  echo  -e "${color} Installing the NodeJS${nocolor}"
+  echo  -e "${color} Installing the NodeJS ${nocolor}"
   yum install nodejs -y &>>$log_file
   stat_check $?
   app_presetup

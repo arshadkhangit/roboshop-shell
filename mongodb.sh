@@ -1,10 +1,17 @@
-echo -e "\e[33mcopy mongodb repo\e[0m"
+source common.sh
+echo -e "${color} copy mongodb repo${nocolor}"
 cp /home/centos/roboshop-shell/mongodb.repo /etc/yum.repos.d/mongodb.repo  &>>/tmp/robodhop.log
-echo -e "\e[33minstalling mongodb server\e[0m"
-yum install mongodb-org -y  &>>/tmp/robodhop.log
+stat_check $?
 
-echo -e "\e[33m updating mongodb config\e[0m"
+echo -e "${color} installing mongodb server${nocolor}"
+yum install mongodb-org -y  &>>/tmp/robodhop.log
+stat_check $?
+
+echo -e "${color} updating mongodb config${nocolor}"
 sed -i 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
-echo -e "\e[33m starting mongodb server\e[0m"
+stat_check $?
+
+echo -e "${color} starting mongodb server${nocolor}"
 systemctl enable mongod &>>/tmp/robodhop.log
 systemctl restart mongod &>>/tmp/robodhop.log
+stat_check $?

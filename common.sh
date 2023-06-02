@@ -97,6 +97,7 @@ mysql_schema_setup() {
 maven() {
   echo -e "${color} Installing Maven ${nocolor}"
   yum install maven -y &>>$log_file
+  stat_check $?
 
   app_presetup
 

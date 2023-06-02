@@ -32,7 +32,6 @@ app_presetup() {
 
   echo -e "${color} Downloading $component file ${nocolor}"
   curl -o /tmp/$component.zip https://roboshop-artifacts.s3.amazonaws.com/$component.zip &>>$log_file
-  cd ${app_path}
   stat_check $?
 
   echo -e "${color} extracting $component file ${nocolor}"

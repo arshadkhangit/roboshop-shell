@@ -64,7 +64,7 @@ nodejs() {
   yum install nodejs -y &>>$log_file
   stat_check $?
   app_presetup
-  stat_check $?
+
   echo -e "${color} installing npm${nocolor}"
   npm install &>>$log_file
   stat_check $?

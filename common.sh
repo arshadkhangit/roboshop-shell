@@ -46,12 +46,11 @@ systemd_setup(){
   systemctl daemon-reload &>>$log_file
   systemctl enable $component &>>$log_file
   systemctl restart $component &>>$log_file
-
-   stat_check $?
+  stat_check $?
 }
 
 
-nodejs() {
+nodejs(){
   echo -e "${color} Configuring the NodeJS${nocolor}"
   curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>$log_file
 
@@ -99,6 +98,7 @@ maven(){
 
   systemd_setup
 }
+
 python(){
   echo -e "${color} Installing Python36 ${nocolor}"
   yum install python36 gcc python3-devel -y &>>$log_file
@@ -107,10 +107,11 @@ python(){
 
   app_presetup
 
-  echo -e "${color} Downloading and Installing Dependencies${nocolor}"
+  echo -e "${color} Downloading and Installing Dependencies ${nocolor}"
   cd ${app_path} &>>$log_file
   pip3.6 install -r requirements.txt &>>$log_file
   stat_check $?
 
   systemd_setup
+
 }
